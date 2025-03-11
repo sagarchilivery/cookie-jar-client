@@ -34,7 +34,6 @@ export default function AddArrival() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(arrival);
 
     if (
       arrival.title === "" ||
