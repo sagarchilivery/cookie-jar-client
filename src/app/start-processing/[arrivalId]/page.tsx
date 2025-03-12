@@ -292,11 +292,6 @@ export default function StartProcessing() {
     }
   };
 
-  // Check if there's a draft in localStorage when component mounts
-  // useEffect(() => {
-  //   if (arrivalId) {
-  //   }
-  // }, [arrivalId]);
 
   useEffect(() => {
     if (arrivalId) {
