@@ -279,7 +279,7 @@ export default function StartProcessing() {
         ...arrival,
         ...actualArrivalData,
         status: "FINISHED",
-        finsihDate: new Date().toISOString(),
+        finishDate: new Date().toISOString(),
       });
 
       if (res.data.success) {

@@ -715,7 +715,7 @@ export default function Dashboard() {
               {["Upcoming", "In Progress", "Finished"].map((tab, index) => (
                 <Tab
                   key={index}
-                  className="data-[selected]:bg-blue-800 rounded-md text-xl px-6 py-1 data-[selected]:text-slate-100 data-[hover]:text-bold text-slate-300 outline-0 ring-0"
+                  className="data-[selected]:bg-blue-800 cursor-pointer rounded-md text-xl px-6 py-1 data-[selected]:text-slate-100 data-[hover]:text-bold text-slate-300 outline-0 ring-0"
                 >
                   {tab}
                 </Tab>
