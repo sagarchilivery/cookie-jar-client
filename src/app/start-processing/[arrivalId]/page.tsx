@@ -221,6 +221,11 @@ export default function StartProcessing() {
   };
 
   const addProductHandler = async () => {
+    if (product.quantity < 1) {
+      toast.error("Quantity must be greater than 0");
+      return;
+    }
+
     try {
       const response = await api.post(`/product`, {
         brandName: selectedBrand,
@@ -291,7 +296,6 @@ export default function StartProcessing() {
       toast.error("Failed to complete arrival");
     }
   };
-
 
   useEffect(() => {
     if (arrivalId) {

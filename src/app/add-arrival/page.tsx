@@ -14,6 +14,7 @@ export default function AddArrival() {
     expected_boxes: null,
     expected_kilograms: null,
     expected_pallets: null,
+    expected_quantity: null,
   });
   const router = useRouter();
 
@@ -41,7 +42,8 @@ export default function AddArrival() {
       arrival.expectedArrivalDate === "" ||
       arrival.expected_boxes === null ||
       arrival.expected_kilograms === null ||
-      arrival.expected_pallets === null
+      arrival.expected_pallets === null ||
+      arrival.expected_quantity === null
     ) {
       toast.error("Please fill all fields");
       return;
@@ -118,6 +120,25 @@ export default function AddArrival() {
               />
             </div>
 
+            {/* Expected Quantity */}
+            <div>
+              <label
+                htmlFor="expected_quantity"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
+                Expected Quantity
+              </label>
+              <input
+                onChange={handleChange}
+                type="number"
+                onWheel={(e) => e.currentTarget.blur()}
+                name="expected_quantity"
+                min={0}
+                id="expected_quantity"
+                className="w-full px-4 py-2 bg-white/10 text-white rounded-lg border border-white/20 focus:ring-2 focus:ring-blue-400 outline-none"
+              />
+            </div>
+
             {/* Expected Boxes */}
             <div>
               <label
@@ -136,25 +157,6 @@ export default function AddArrival() {
                 className="w-full px-4 py-2 bg-white/10 text-white rounded-lg border border-white/20 focus:ring-2 focus:ring-blue-400 outline-none"
               />
             </div>
-
-            {/* Expected Pieces */}
-            {/* <div>
-              <label
-                htmlFor="expected_quantity"
-                className="block text-sm font-medium text-gray-300 mb-1"
-              >
-                Expected Pieces
-              </label>
-              <input
-                onChange={handleChange}
-                type="number"
-                onWheel={(e) => e.currentTarget.blur()}
-                name="expected_quantity"
-                min={0}
-                id="expected_quantity"
-                className="w-full px-4 py-2 bg-white/10 text-white rounded-lg border border-white/20 focus:ring-2 focus:ring-blue-400 outline-none"
-              />
-            </div> */}
 
             {/* Expected Kilograms */}
             <div>

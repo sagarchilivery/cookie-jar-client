@@ -23,6 +23,7 @@ export default function Dashboard() {
   const [deletingArrival, setDeletingArrival] = useState("");
   const [processingArrival, setProcessingArrival] = useState("");
   const [arrivals, setArrivals] = useState<any>([]);
+  console.log("arrivals: ", arrivals);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [sortOrder, setSortOrder] = useState("asc");
   const [showProducts, setShowProducts] = useState(false);
@@ -311,14 +312,19 @@ export default function Dashboard() {
                         arrival.expectedArrivalDate
                       ).toLocaleDateString()}
                     </p>
+
                     <p className="text-lg text-gray-300">
-                      📦 <span className="font-medium">Expected boxes:</span>{" "}
-                      {arrival.expected_boxes}
+                    🔢 <span className="font-medium">Expected Quantity:</span>{" "}
+                      {arrival.expected_quantity}
                     </p>
                     <p className="text-lg text-gray-300">
                       ⚖️{" "}
                       <span className="font-medium">Expected kilograms:</span>{" "}
                       {arrival.expected_kilograms}
+                    </p>
+                    <p className="text-lg text-gray-300">
+                      📦 <span className="font-medium">Expected boxes:</span>{" "}
+                      {arrival.expected_boxes}
                     </p>
                     <p className="text-lg text-gray-300">
                       🧇 <span className="font-medium">Expected pallets:</span>{" "}
@@ -336,13 +342,18 @@ export default function Dashboard() {
                           ).toLocaleDateString()}
                         </p>
                         <p className="text-lg text-gray-300">
-                          📦 <span className="font-medium">Actual boxes:</span>{" "}
-                          {arrival.actual_boxes}
+                          🔢{" "}
+                          <span className="font-medium">Actual Quantity:</span>{" "}
+                          {arrival.actual_quantity}
                         </p>
                         <p className="text-lg text-gray-300">
                           ⚖️{" "}
                           <span className="font-medium">Actual kilograms:</span>{" "}
                           {arrival.actual_kilograms}
+                        </p>
+                        <p className="text-lg text-gray-300">
+                          📦 <span className="font-medium">Actual boxes:</span>{" "}
+                          {arrival.actual_boxes}
                         </p>
                         <p className="text-lg text-gray-300">
                           🧇{" "}
@@ -488,22 +499,25 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
+                  {/* quantity */}
                   <div>
                     <label className="block text-gray-300 text-lg">
-                      Expected Boxes
+                      Expected Quantity
                     </label>
                     <input
                       type="number"
                       className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-gray-500"
-                      value={updateArrival.expected_boxes || ""}
+                      value={updateArrival.expected_quantity || ""}
                       onChange={(e) =>
                         setUpdateArrival({
                           ...updateArrival,
-                          expected_boxes: parseInt(e.target.value, 10) || 0,
+                          expected_quantity: parseInt(e.target.value, 10) || 0,
                         })
                       }
                     />
                   </div>
+
+                  {/* Kilograms */}
                   <div>
                     <label className="block text-gray-300 text-lg">
                       Expected Kilograms
@@ -523,6 +537,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
+                  {/* Pallets */}
                   <div>
                     <label className="block text-gray-300 text-lg">
                       Expected Pallets
@@ -535,6 +550,24 @@ export default function Dashboard() {
                         setUpdateArrival({
                           ...updateArrival,
                           expected_pallets: parseInt(e.target.value, 10) || 0,
+                        })
+                      }
+                    />
+                  </div>
+
+                  {/* boxes */}
+                  <div>
+                    <label className="block text-gray-300 text-lg">
+                      Expected Boxes
+                    </label>
+                    <input
+                      type="number"
+                      className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-gray-500"
+                      value={updateArrival.expected_boxes || ""}
+                      onChange={(e) =>
+                        setUpdateArrival({
+                          ...updateArrival,
+                          expected_boxes: parseInt(e.target.value, 10) || 0,
                         })
                       }
                     />
